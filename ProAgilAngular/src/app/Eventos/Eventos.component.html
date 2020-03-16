@@ -1,0 +1,49 @@
+<div action="" class="form-inline">
+    <div class="form-group mb-2">
+        <input type="text" class="form-control mr-2" 
+        placeholder="buscar"
+        [(ngModel)]="filtroLista"
+        >
+    </div>
+</div>
+<h3> Filtro: {{filtroLista}}</h3>
+<table class="table table-striped">
+    <thead class="thead-dark">
+        <tr>
+            <th>#</th>
+            <th>
+                <button class="btn btn-outline-success" (click)="this.MostrarCampo()"> Mostrar Campo</button> 
+            </th> 
+            <th>Tema</th>
+            <th>Local</th>
+            <th>Data</th>
+            <th>Qtd pessoas</th>
+            <th>Lote</th>
+            <th>Opções</th>
+        </tr>
+    </thead>
+    <tbody *ngIf="eventos && eventos.length">
+        <tr *ngFor="let evento of eventosFiltrados">
+            <td>{{evento.eventoId}}</td>
+            <td *ngIf="mostrarcampo">{{evento.eventoId}}</td>
+            <td>{{evento.tema | uppercase }}</td>
+            <td> {{evento.local}}</td>
+            <td>{{evento.dataEvento }}</td>
+            <td>{{evento.qtdPessoas}}</td>
+            <td>{{evento.lote}}</td>
+            <td>
+                <button class="btn btn-success"></button>
+                <button class="btn btn-danger"></button>
+            </td>
+        </tr>
+    </tbody>
+    <tfoot>
+        <tr *ngIf="!eventos">
+            <td colspan="3" class="text-center"></td>
+            <h3>
+                Nenhum evento encontrado
+            </h3>
+        </tr> 
+    </tfoot>
+</table>
+ 
